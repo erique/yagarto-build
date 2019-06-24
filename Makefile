@@ -15,7 +15,7 @@ boot.elf: reset.o main.o
 	$(LD) -v -g -Map=boot.map -Tlink.ld --oformat elf32-littlearm -o boot.elf main.o
 
 boot.lst: boot.elf
-	$(OBJDUMP) -v -d -S boot.elf > boot.lst
+	$(OBJDUMP) -d -S boot.elf > boot.lst
 
 boot.bin: boot.elf
 	$(OBJCOPY) -v -Obinary boot.elf boot.bin
