@@ -1,5 +1,7 @@
 language: c
-os: windows
+os:
+  - windows
+  - linux
 
 addons:
   apt:
