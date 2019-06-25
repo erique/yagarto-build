@@ -26,12 +26,13 @@ before_deploy:
   - git config --local user.email "build@monkey.apa"
   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   - git tag $TRAVIS_TAG
+  - 7z a boot-$TRAVIS_OS_NAME.zip boot.*
 deploy:
   provider: releases
   api_key:
     secure: LCcxsPbC+j8hVWiY+OIrlcMQVGIkNzfoLzIHh5wXIrSTy7ngmXnXR90MwaKA3KUvpHaTQprFLn71G6m413meJeiQOgIo4Vaz4w+i/ADgPjc066TiTGmXtbGs27l4KBBlXNaQbVrbkAVTHJFbHFgl4z6kjUW5lGl+utYY94ygBB2JceHjGbTcZkyEE5i3R3DFDHjz/J4f/91lv15vuRisk2quEzMowFIskNdZ9XnY2AKi2OTJSAo0T/M7m9HCeor5ctzKQkSN0kocbCko7zHLilu5hzvPryOm86U3fhBqqoBB2kpaTnpwfRZuc3sVfjd5//JaCzISnwx81auGo+rSmkyrrtFv7Du2Ivt84CCuy6dXgTBiFI/1OiojIWME2PIrcIibDO+gRtE0ZUkOM1PX7SMSNdNSSZbxrp2ZeAHHB1WdIZ049ZsGT6FUuz+Y8GbwuImB7aDs3zKjVY1IN0CziMuMsDh8lhVA5OBJw7x+S5UUhAXQcNmS+gr4E/iATmqqt3AL/oC310nf5sEwwUkMAR1A5JlKcQFbgAnBMMx4G8DFfy1bsAxhUb3BgaLQ5Sg0GjFjWWuwFPvHqLikSclJFeZe86ZoUoUg3DbLgZfha2/OnjfIgIo3hrGNYXK3lu/PJmkxDZHPue2n/Ky9xNMIALXprrOw1GNBVralNPk2BIw=
   file_glob: true
-  file: boot.*
+  file: boot-$TRAVIS_OS_NAME.zip
   skip_cleanup: true
   draft: true
   overwrite: true
