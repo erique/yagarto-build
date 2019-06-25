@@ -7,6 +7,7 @@ addons:
   apt:
     packages:
       - gcc-arm-none-eabi
+      - p7zip-full
   choco:
     packages:
       - make
