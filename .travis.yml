@@ -15,7 +15,7 @@ addons:
 install:
   - wget https://sourceforge.net/projects/yagarto/files/YAGARTO%20for%20Windows/20111119/yagarto-bu-2.21_gcc-4.6.2-c-c%2B%2B_nl-1.19.0_gdb-7.3.1_eabi_20111119.exe
   - 7z x "yagarto-bu-2.21_gcc-4.6.2-c-c++_nl-1.19.0_gdb-7.3.1_eabi_20111119.exe" -oyagarto
-  - export PATH="$PWD/yagarto/bin:$PATH"
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then export PATH="$PWD/yagarto/bin:$PATH"; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install make; fi
 script:
   - make

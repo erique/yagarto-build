@@ -4,7 +4,7 @@ LD = arm-none-eabi-ld
 SIZE = arm-none-eabi-size
 OBJCOPY = arm-none-eabi-objcopy
 OBJDUMP = arm-none-eabi-objdump
-CFLAGS  = -O2 -g -Wall -mthumb -mthumb-interwork
+CFLAGS  = -v -O2 -g -Wall -mthumb -mthumb-interwork
 ASFLAGS = -g --warn -mthumb -mthumb-interwork
 
 all: boot.s19 boot.bin boot.lst boot.elf
