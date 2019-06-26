@@ -11,6 +11,10 @@ addons:
       - libnewlib-arm-none-eabi
       - p7zip-full
   choco:
+#  homebrew:
+#    taps: PX4/homebrew-px4
+#    packages:
+#      - gcc-arm-none-eabi-48
     packages:
       - make
  
