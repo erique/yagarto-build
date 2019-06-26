@@ -10,7 +10,7 @@ addons:
       - gcc-arm-none-eabi
       - libnewlib-arm-none-eabi
       - p7zip-full
-  brew:
+  homebrew:
     taps: PX4/homebrew-px4
     packages:
       - gcc-arm-none-eabi-48
