@@ -35,7 +35,7 @@ deploy:
   file_glob: true
   file: boot-$TRAVIS_OS_NAME.zip
   skip_cleanup: true
-  draft: true
+#  draft: true
   overwrite: true
   on:
     repo: erique/yagarto-build
