@@ -2,6 +2,9 @@ language: c
 os:
   - windows
   - linux
+  - osx
+
+osx_image: xcode10
 
 addons:
   apt:
@@ -10,10 +13,15 @@ addons:
       - libnewlib-arm-none-eabi
       - p7zip-full
   choco:
+#  homebrew:
+#    taps: PX4/homebrew-px4
+#    packages:
+#      - gcc-arm-none-eabi-48
     packages:
       - make
  
 install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew tap PX4/homebrew-px4 && brew update && brew install gcc-arm-none-eabi-48; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then wget https://sourceforge.net/projects/yagarto/files/YAGARTO%20for%20Windows/20111119/yagarto-bu-2.21_gcc-4.6.2-c-c%2B%2B_nl-1.19.0_gdb-7.3.1_eabi_20111119.exe; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then 7z x "yagarto-bu-2.21_gcc-4.6.2-c-c++_nl-1.19.0_gdb-7.3.1_eabi_20111119.exe" -oyagarto; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then export PATH="$PWD/yagarto/bin:$PATH"; fi
@@ -21,12 +29,6 @@ install:
 script:
   - make
 before_deploy:
-  # Set up git user name and tag this commit
-#  - git config --local user.name "buildmonkey"
-#  - git config --local user.email "build@monkey.apa"
-#  - export TRAVIS_TAG=${TRAVIS_TAG:-release-$(git log --format=%h -1)}
-#  - echo $TRAVIS_TAG
-#  - git tag $TRAVIS_TAG
   - 7z a boot-$TRAVIS_OS_NAME.zip boot.*
 deploy:
   provider: releases
