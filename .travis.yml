@@ -10,15 +10,12 @@ addons:
       - gcc-arm-none-eabi
       - libnewlib-arm-none-eabi
       - p7zip-full
-  homebrew:
-    taps: PX4/homebrew-px4
-    packages:
-      - gcc-arm-none-eabi-48
   choco:
     packages:
       - make
  
 install:
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew tap PX4/homebrew-px4 && brew update && brew install gcc-arm-none-eabi-48; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then wget https://sourceforge.net/projects/yagarto/files/YAGARTO%20for%20Windows/20111119/yagarto-bu-2.21_gcc-4.6.2-c-c%2B%2B_nl-1.19.0_gdb-7.3.1_eabi_20111119.exe; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then 7z x "yagarto-bu-2.21_gcc-4.6.2-c-c++_nl-1.19.0_gdb-7.3.1_eabi_20111119.exe" -oyagarto; fi
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then export PATH="$PWD/yagarto/bin:$PATH"; fi
