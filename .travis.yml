@@ -2,6 +2,7 @@ language: c
 os:
   - windows
   - linux
+  - osx
 
 addons:
   apt:
@@ -9,6 +10,10 @@ addons:
       - gcc-arm-none-eabi
       - libnewlib-arm-none-eabi
       - p7zip-full
+  brew:
+    taps: PX4/homebrew-px4
+    packages:
+      - gcc-arm-none-eabi-48
   choco:
     packages:
       - make
