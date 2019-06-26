@@ -21,12 +21,6 @@ install:
 script:
   - make
 before_deploy:
-  # Set up git user name and tag this commit
-#  - git config --local user.name "buildmonkey"
-#  - git config --local user.email "build@monkey.apa"
-#  - export TRAVIS_TAG=${TRAVIS_TAG:-release-$(git log --format=%h -1)}
-#  - echo $TRAVIS_TAG
-#  - git tag $TRAVIS_TAG
   - 7z a boot-$TRAVIS_OS_NAME.zip boot.*
 deploy:
   provider: releases
